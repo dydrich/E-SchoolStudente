@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             atoast.show();
         }
 
-        if (token == "") {
+        if (token.equals("")) {
             Context context = getApplicationContext();
             CharSequence text = "Non hai ancora effettuato il login";
             int duration = Toast.LENGTH_LONG;
@@ -84,12 +84,7 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     protected void signInWithToken(String tok) {
